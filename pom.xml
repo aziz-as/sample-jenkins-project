@@ -58,7 +58,7 @@
 	</dependencies>
 	< distributionManagement >
     < snapshotRepository >
-       < id >nexus-snapshots</ id >
+       < id >nexus-release</ id >
        < url >http://localhost:8081/nexus/content/repositories/snapshots</ url >
     </ snapshotRepository >
 </ distributionManagement >
