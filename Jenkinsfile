@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                bat 'mvn spring-boot:run' 
+                sh 'mvn -B -DskipTests clean package' 
             }
         }
     }
