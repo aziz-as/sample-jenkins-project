@@ -1,32 +1,12 @@
+Jenkinsfile (Declarative Pipeline)
+/* Requires the Docker Pipeline plugin */
 pipeline {
-	agent any
-
-	environment {
-		mavenHome = tool 'jenkins-maven'
-	}
-
-	tools {
-		jdk 'jdk-1.8.101'
-	}
-
-	stages {
-
-		stage('Build'){
-			steps {
-				bat "mvn clean install -DskipTests"
-			}
-		}
-
-		stage('Test'){
-			steps{
-				bat "mvn test"
-			}
-		}
-
-		stage('Deploy') {
-			steps {
-			    bat "mvn jar:jar deploy:deploy"
-			}
-		}
-	}
+    agent { docker { image 'maven:3.9.9-eclipse-temurin-21-alpine' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn spring-boot:run'
+            }
+        }
+    }
 }
