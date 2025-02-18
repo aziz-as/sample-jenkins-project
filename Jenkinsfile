@@ -1,11 +1,9 @@
-
-/* Requires the Docker Pipeline plugin */
 pipeline {
-    agent { docker { image 'maven' } }
+    agent any
     stages {
-        stage('build') {
+        stage('Build') { 
             steps {
-                sh 'mvn spring-boot:run'
+                sh 'mvn spring-boot:run' 
             }
         }
     }
