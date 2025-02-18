@@ -1,22 +1,13 @@
 pipeline {
     agent any
-    tools { 
-        MAVEN 'Maven 3.9.9' 
-        JAVA 'jdk17' 
+    environment { 
+      PATH = "C:\Program Files\apache-maven-3.9.9\bin:$PATH"
     }
     stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "JAVA = ${JAVA}"
-                    echo "MAVEN = ${MAVEN}"
-                ''' 
-            }
-        }
 
         stage ('Build') {
             steps {
-                echo 'This is a minimal pipeline.'
+                bat "mvn clean install"
             }
         }
     }
